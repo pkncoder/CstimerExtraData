@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+    <link rel="stylesheet" href="../static/style.css">
+    <title>{% block title %}Base Page{% endblock %}</title>
+
+</head>
+
+<body>
+
+    
+    <nav class="navbar">
+        <ul id="nav_ul">
+            <li id="nav_li"><a href="/">Home</a></li>
+            <li id="nav_li"><a href="/how">How to Use</a></li>
+            <li id="nav_li"><a href="/extradata">Cstimer Extra Data</a></li>
+        </ul>
+    </nav> 
+
+    <div class="outside-border">
+
+        {% block content %}
+        {% endblock %}
+
+    </div>
+
+</body>
+
+</html>

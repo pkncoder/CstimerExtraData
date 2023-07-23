@@ -1,0 +1,58 @@
+{% extends 'base.html' %}
+{% block title %}
+Extra Cstimer Data
+{% endblock %}
+
+{% block content %}
+
+{% if form == 'True' %}
+
+<form method="post" action="/extradata">
+
+    <label for="data" style="font-size: 24px;">Please input your data from the file here: </label>
+    <input type="text" id="data" name="data" style="font-size: 16px;"/>
+    <br>
+    
+    <input type="submit" style="font-size: 24px;">
+
+</form>
+
+{% elif data == 'True' %}
+
+<div style="border-top: 5px solid rgb(98, 43, 226); border-bottom: 5px solid rgb(98, 43, 226); padding: 3px;">
+
+<form action="/extradata" method="post">
+
+{% for sessions in jsondata %}
+
+{% if sessions != 'properties' %}
+<button value="{{sessions}}" type="{{submit}}" name="session_num" id="session_choice_button">{{sessions}}</button>
+{% endif %}
+
+{% endfor %}
+
+<input  name="data" type="hidden" value='{{jsondata|tojson}}'>
+
+</form>
+
+</div>
+
+
+<h1>You have {{total_solves}} total solve(s)!</h1>
+<h1>You have {{sub_10_solve}} sub-10(s)!</h1>
+<h1>You have {{sub_12_solve}} sub-12(s)!</h1>
+<h1>You have {{sub_15_solve}} sub-15(s)!</h1>
+<h1>You have {{sub_20_solve}} sub-20(s)!</h1>
+<h1>You have {{sub_25_solve}} sub-25(s)!</h1>
+<h1>You have {{sub_30_solve}} sub-30(s)!</h1>
+<h1>You have {{sub_minute_solve}} sub-minute(s)!</h1>
+<h1>You have {{minute_solve}} minute_solve(s)!</h1>
+<h1>You have {{plus_2s}} plus 2(s).</h1>
+<h1>You have {{dnfs}} dnf(s).</h1>
+<h1>
+
+</h1>
+
+{% endif %}
+
+{% endblock %}
